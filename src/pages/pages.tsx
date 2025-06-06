@@ -1,4 +1,5 @@
-import Weather from '@/features/home/ui/Weather';
+import Forecast from '@/features/forecast';
+import Home from '@/features/home';
 import MainLayout from '@/layouts/main';
 import { Route, Routes } from 'react-router-dom';
 
@@ -6,8 +7,8 @@ const Pages = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route path="/" index element={<Weather />} />
-        <Route path="/forecast" element={<p>forecast</p>} />
+        <Route path="/" index element={<Home />} />
+        <Route path="/forecast" element={<Forecast />} />
         <Route path="/statistics" element={<p>statistics</p>} />
         <Route path="*" element={<p>404 not found</p>} />
       </Route>

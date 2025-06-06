@@ -8,7 +8,7 @@ const MainLayout = () => {
     <main>
       <Header />
       <PageTabs />
-      <div className="h-full min-h-[700px]">
+      <div className="h-full min-h-[700px] mt-8">
         <Outlet />
       </div>
       <Footer />
