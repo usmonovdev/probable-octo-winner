@@ -1,6 +1,6 @@
 import useWeatherData from '@/shared/hooks/use-weather-data';
 import { convertTemperature } from '@/shared/lib/convertTemperature';
-import { getWeatherIcon } from '@/shared/lib/weatherIcons';
+import getWeatherIcon from '@/shared/lib/weatherIcons';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Droplets, Eye, Gauge, Thermometer, Wind } from 'lucide-react';
 
