@@ -12,6 +12,13 @@ const initialState: WeatherState = {
   loading: false,
   error: null,
   lastUpdated: null,
+  displayOptions: {
+    showHumidity: true,
+    showWindSpeed: true,
+    showVisibility: true,
+    showPressure: true,
+    showUVIndex: true,
+  },
 };
 
 function weatherReducer(
@@ -62,6 +69,11 @@ function weatherReducer(
       return {
         ...state,
         error: null,
+      };
+    case 'DISPLAY_OPTIONS':
+      return {
+        ...state,
+        displayOptions: { ...action.payload },
       };
     default:
       return state;

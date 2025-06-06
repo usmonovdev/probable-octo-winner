@@ -8,6 +8,13 @@ export interface WeatherState {
   loading: boolean;
   error: string | null;
   lastUpdated: Date | null;
+  displayOptions: {
+    showHumidity: boolean;
+    showWindSpeed: boolean;
+    showVisibility: boolean;
+    showPressure: boolean;
+    showUVIndex: boolean;
+  };
 }
 
 export type WeatherAction =
@@ -20,7 +27,17 @@ export type WeatherAction =
   | { type: 'CHANGE_CITY'; payload: string }
   | { type: 'TOGGLE_UNIT'; payload: 'celsius' | 'fahrenheit' }
   | { type: 'SET_ERROR'; payload: string }
-  | { type: 'CLEAR_ERROR' };
+  | { type: 'CLEAR_ERROR' }
+  | {
+      type: 'DISPLAY_OPTIONS';
+      payload: {
+        showHumidity: boolean;
+        showWindSpeed: boolean;
+        showVisibility: boolean;
+        showPressure: boolean;
+        showUVIndex: boolean;
+      };
+    };
 
 export interface WeatherStatistics {
   avgTemp: number;

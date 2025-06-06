@@ -21,7 +21,7 @@ const LangToggle = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <GlobeIcon />
-          <span>{languages.find((e) => e.key == i18n.language)?.name}</span>
+          <span>{languages.find((e) => e.key === i18n.language)?.name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

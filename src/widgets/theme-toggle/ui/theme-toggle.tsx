@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   const { setTheme, theme } = useTheme();
 
   const onChangeTheme = () => {
-    if (theme == 'light') {
+    if (theme === 'light') {
       setTheme('dark');
     } else {
       setTheme('light');

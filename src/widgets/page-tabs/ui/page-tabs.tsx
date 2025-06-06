@@ -7,11 +7,11 @@ const PageTabs = () => {
 
   return (
     <div className="custom-container">
-      <div className="flex flex-row w-full gap-2">
+      <div className="flex flex-row max-sm:flex-col w-full gap-2">
         <div className="w-full">
           <Button
             className="w-full"
-            variant={pathname == '/' ? 'default' : 'outline'}
+            variant={pathname === '/' ? 'default' : 'outline'}
             size={'lg'}
             asChild
           >
@@ -23,7 +23,7 @@ const PageTabs = () => {
         <div className="w-full">
           <Button
             className="w-full"
-            variant={pathname == '/forecast' ? 'default' : 'outline'}
+            variant={pathname === '/forecast' ? 'default' : 'outline'}
             size={'lg'}
             asChild
           >
@@ -35,7 +35,7 @@ const PageTabs = () => {
         <div className="w-full">
           <Button
             className="w-full"
-            variant={pathname == '/statistics' ? 'default' : 'outline'}
+            variant={pathname === '/statistics' ? 'default' : 'outline'}
             size={'lg'}
             asChild
           >

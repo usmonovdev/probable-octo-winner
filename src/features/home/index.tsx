@@ -5,7 +5,7 @@ import { Skeleton } from '@/shared/ui/skeleton';
 import { Droplets, Eye, Gauge, Thermometer, Wind } from 'lucide-react';
 
 const Home = () => {
-  const { currentWeather, unit, selectedCity, loading, error } =
+  const { currentWeather, unit, selectedCity, loading, error, displayOptions } =
     useWeatherData();
 
   if (loading) {
@@ -17,10 +17,6 @@ const Home = () => {
             <Skeleton className="w-36 h-6" />
             <Skeleton className="w-20 h-4" />
           </div>
-        </div>
-        <div className="flex flex-col gap-2 items-center">
-          <Skeleton className="w-full h-6" />
-          <Skeleton className="w-full h-6" />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {Array(6)
@@ -70,7 +66,7 @@ const Home = () => {
         <div className="felx flex-col items-start">
           <p className="text-sm text-muted-foreground">{selectedCity}</p>
           <p className="text-5xl uppercase font-semibold">
-            {temperature} {unitSymbol}
+            {Math.round(temperature)} {unitSymbol}
           </p>
           <h1 className="text-lg">
             Feels like {feelsLike} {unitSymbol}
@@ -81,65 +77,75 @@ const Home = () => {
 
       {/* Weather details start */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-          <Droplets className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-          <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Humidity
-            </div>
-            <div className="font-semibold text-gray-900 dark:text-white">
-              {currentWeather.humidity}%
+        {displayOptions.showHumidity && (
+          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+            <Droplets className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Humidity
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white">
+                {currentWeather.humidity}%
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-          <Wind className="h-5 w-5 text-green-600 dark:text-green-400" />
-          <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Wind Speed
-            </div>
-            <div className="font-semibold text-gray-900 dark:text-white">
-              {currentWeather.windSpeed} m/s
+        {displayOptions.showWindSpeed && (
+          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+            <Wind className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Wind Speed
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white">
+                {currentWeather.windSpeed} m/s
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-          <Eye className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-          <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Visibility
-            </div>
-            <div className="font-semibold text-gray-900 dark:text-white">
-              {(currentWeather.visibility / 1000).toFixed(1)} km
+        {displayOptions.showVisibility && (
+          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+            <Eye className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Visibility
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white">
+                {(currentWeather.visibility / 1000).toFixed(1)} km
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-          <Gauge className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-          <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Pressure
-            </div>
-            <div className="font-semibold text-gray-900 dark:text-white">
-              {currentWeather.pressure} hPa
+        {displayOptions.showPressure && (
+          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+            <Gauge className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+            <div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Pressure
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white">
+                {currentWeather.pressure} hPa
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-          <Thermometer className="h-5 w-5 text-red-600 dark:text-red-400" />
-          <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              UV Index
-            </div>
-            <div className="font-semibold text-gray-900 dark:text-white">
-              {currentWeather.uvIndex}
+        {displayOptions.showUVIndex && (
+          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+            <Thermometer className="h-5 w-5 text-red-600 dark:text-red-400" />
+            <div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                UV Index
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white">
+                {currentWeather.uvIndex}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       {/* Weather details end */}
     </section>

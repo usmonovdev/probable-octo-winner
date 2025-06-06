@@ -17,6 +17,19 @@ const useWeatherData = () => {
     dispatch({ type: 'CLEAR_ERROR' });
   }, []);
 
+  const toggleDisplayOptions = useCallback(
+    (displayOptions: {
+      showHumidity: boolean;
+      showWindSpeed: boolean;
+      showVisibility: boolean;
+      showPressure: boolean;
+      showUVIndex: boolean;
+    }) => {
+      dispatch({ type: 'DISPLAY_OPTIONS', payload: { ...displayOptions } });
+    },
+    [],
+  );
+
   const fetchWeather = useCallback(async (city: string) => {
     dispatch({ type: 'FETCH_WEATHER' });
 
@@ -53,6 +66,7 @@ const useWeatherData = () => {
     toggleUnit,
     clearError,
     fetchWeather,
+    toggleDisplayOptions,
   };
 };
 

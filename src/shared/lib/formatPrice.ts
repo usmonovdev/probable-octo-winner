@@ -10,9 +10,9 @@ import { LanguageRoutes } from '@/shared/config/i18n/type';
 const formatPrice = (amount: number | string, withLabel?: boolean) => {
   const locale = i18n.language;
   const label = withLabel
-    ? locale == LanguageRoutes.RU
+    ? locale === LanguageRoutes.RU
       ? ' сум'
-      : locale == LanguageRoutes.KI
+      : locale === LanguageRoutes.KI
         ? ' сўм'
         : ' so‘m'
     : '';
@@ -22,7 +22,7 @@ const formatPrice = (amount: number | string, withLabel?: boolean) => {
 
   const formattedDollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
-  if (String(amount).length == 0) {
+  if (String(amount).length === 0) {
     return formattedDollars + '.' + cents + label;
   } else {
     return formattedDollars + label;
