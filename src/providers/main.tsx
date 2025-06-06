@@ -1,16 +1,17 @@
-import type { ReactNode } from 'react';
-import QueryProvider from './react-query/QueryProvider';
-import { ThemeProvider } from '@/providers/theme/ThemeProvider';
+import { ThemeProvider } from '@/shared/contexts/theme/ThemeProvider';
+import { BrowserRouter } from 'react-router-dom';
+import Pages from '@/pages/pages';
+import { WeatherProvider } from '@/shared/contexts/weather/WeatherProvider';
 
-interface Props {
-  children: ReactNode;
-}
-
-const MainProvider = ({ children }: Props) => {
+const MainProvider = () => {
   return (
-    <QueryProvider>
-      <ThemeProvider defaultTheme="light">{children}</ThemeProvider>
-    </QueryProvider>
+    <BrowserRouter>
+      <ThemeProvider defaultTheme="light">
+        <WeatherProvider>
+          <Pages />
+        </WeatherProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 
