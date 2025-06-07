@@ -1,3 +1,5 @@
-# React + TypeScript + Vite
+Author: [Usmonov Azizbek](https://azizziy.uz)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Demo (Vercel): https://probable-octo-winner.vercel.app
+
+GitHub: https://github.com/usmonovdev/probable-octo-winner
