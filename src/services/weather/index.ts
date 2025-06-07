@@ -12,6 +12,11 @@ class WeatherService {
     import.meta.env.VITE_WEATHERMAP_API_URL ||
     'https://api.openweathermap.org/data/2.5';
 
+  /**
+   * Ob-havoni aniqlash
+   * @param city Ob-havosi aniqlanadigan shaxar nomi
+   * @returns promise
+   */
   async getCurrentWeather(city: string): Promise<WeatherData> {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -44,10 +49,16 @@ class WeatherService {
         throw new Error(`Failed to fetch weather data for ${city}`);
       }
     } else {
+      // Api key bo'lmasa custom data ishlatiladi
       return { ...mockWeatherData[city], timestamp: new Date() };
     }
   }
 
+  /**
+   * 5 Kunlik taxminiy ob havo ma'lumotlarini olish
+   * @param city Kerakli shaxar nomi
+   * @returns promise
+   */
   async getForecast(city: string): Promise<ForecastData[]> {
     await new Promise((resolve) => setTimeout(resolve, 600));
 
@@ -113,6 +124,7 @@ class WeatherService {
         throw new Error(`Failed to fetch forecast data for ${city}`);
       }
     } else {
+      // Agar api key bo'lmasa mock data ishlatiladi
       return mockForecastData[city];
     }
   }

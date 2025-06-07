@@ -2,6 +2,7 @@ import useWeatherData from '@/shared/hooks/use-weather-data';
 import { convertTemperature } from '@/shared/lib/convertTemperature';
 import getWeatherIcon from '@/shared/lib/weatherIcons';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { motion } from 'motion/react';
 
 const Forecast = () => {
   const { forecast, unit, loading, error } = useWeatherData();
@@ -26,7 +27,7 @@ const Forecast = () => {
 
   if (error) {
     return (
-      <div className="text-center text-red-600 dark:text-red-400">
+      <div className="text-center text-destructive">
         <p className="text-lg font-semibold">Error Loading Weather Data</p>
         <p className="text-sm mt-2">{error}</p>
       </div>
@@ -45,17 +46,31 @@ const Forecast = () => {
 
   return (
     <section className="custom-container space-y-6">
-      <div className="flex flex-col gap-1 items-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex flex-col gap-1 items-center"
+      >
         <h1 className="text-4xl font-semibold leading-none">Forecast</h1>
         <p className="text-muted-foreground">5-day forecast</p>
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {forecast.slice(0, 5).map((day, index) => {
           const maxTemp = convertTemperature(day.maxTemp, 'celsius', unit);
           const minTemp = convertTemperature(day.minTemp, 'celsius', unit);
 
           return (
-            <div key={index} className="bg-accent rounded-2xl">
+            <motion.div
+              initial={{ y: 5, opacity: 0, filter: 'blur(10px)' }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                filter: 'blur(0)',
+                transition: { delay: index / 10 },
+              }}
+              key={index}
+              className="bg-accent rounded-2xl"
+            >
               <div className="p-4">
                 <div className="text-center space-y-3">
                   <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -87,7 +102,7 @@ const Forecast = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

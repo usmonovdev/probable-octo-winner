@@ -3,6 +3,11 @@ export interface ValidationResult {
   error?: string;
 }
 
+/**
+ * Search orqali kiritilgan cityni validate qilish uchun fnksiya
+ * @param city Search orqali keladigan shaxar
+ * @returns boolean
+ */
 const validateCity = (city: string): ValidationResult => {
   if (!city || city.trim().length === 0) {
     return {

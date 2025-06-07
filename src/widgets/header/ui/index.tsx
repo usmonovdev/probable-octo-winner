@@ -5,13 +5,15 @@ import ThemeToggle from '@/widgets/theme-toggle/ui/theme-toggle';
 
 const Header = () => {
   return (
-    <header className="custom-container h-[90px] flex items-center justify-between">
+    <header className="custom-container h-[90px] flex items-center gap-2 justify-between">
       <div className="flex flex-row items-center gap-2">
         <CitySelector />
         <SearchLocation />
       </div>
       <div className="flex flex-row items-center gap-2">
-        <ThemeToggle />
+        <div className="max-sm:hidden">
+          <ThemeToggle />
+        </div>
         <Settings />
       </div>
     </header>

@@ -1,22 +1,23 @@
 const getWeatherIcon = (condition: string): string => {
   const iconMap: Record<string, string> = {
-    sunny: '/weather-icons/sunny.svg',
-    clear: '/weather-icons/clear.svg',
-    cloudy: '/weather-icons/cloudy.svg',
-    'partly cloudy': '/weather-icons/party_cloudy.svg',
-    overcast: '/weather-icons/overcast.svg',
-    rainy: '/weather-icons/rainy.svg',
-    'light rain': '/weather-icons/light_rain.svg',
-    'moderate rain': '/weather-icons/moderate_rain.svg',
-    'heavy rain': '/weather-icons/heawy_rain.svg',
     thunderstorm: '/weather-icons/thunderstorm.svg',
+    drizzle: '/weather-icons/light_rain.svg',
+    rain: '/weather-icons/rainy.svg',
     snow: '/weather-icons/snow.svg',
+    mist: '/weather-icons/fog.svg',
+    smoke: '/weather-icons/fog.svg',
+    haze: '/weather-icons/fog.svg',
+    dust: '/weather-icons/fog.svg',
     fog: '/weather-icons/fog.svg',
-    mist: '/weather-icons/mist.svg',
-    windy: '/weather-icons/windy.svg',
+    sand: '/weather-icons/fog.svg',
+    ash: '/weather-icons/fog.svg',
+    squall: '/weather-icons/windy.svg',
+    tornado: '/weather-icons/windy.svg',
+    clear: '/weather-icons/clear.svg',
+    clouds: '/weather-icons/cloudy.svg',
   };
 
-  return iconMap[condition.toLowerCase()] || '/weather-icons/sunny.svg';
+  return iconMap[condition.toLowerCase()] || '/weather-icons/clear.svg';
 };
 
 export default getWeatherIcon;

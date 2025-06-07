@@ -3,6 +3,7 @@ import { convertTemperature } from '@/shared/lib/convertTemperature';
 import getWeatherIcon from '@/shared/lib/weatherIcons';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Droplets, Eye, Gauge, Thermometer, Wind } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const Home = () => {
   const { currentWeather, unit, selectedCity, loading, error, displayOptions } =
@@ -18,11 +19,11 @@ const Home = () => {
             <Skeleton className="w-20 h-4" />
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="flex flex-col max-w-sm mx-auto gap-4">
           {Array(6)
             .fill(null)
             .map((_, i) => (
-              <Skeleton key={i} className="h-[70px] w-full" />
+              <Skeleton key={i} className="h-[68px] w-full" />
             ))}
         </div>
       </div>
@@ -31,7 +32,7 @@ const Home = () => {
 
   if (error) {
     return (
-      <div className="text-center text-red-600 dark:text-red-400">
+      <div className="text-center text-destructive">
         <p className="text-lg font-semibold">Error Loading Weather Data</p>
         <p className="text-sm mt-2">{error}</p>
       </div>
@@ -62,23 +63,46 @@ const Home = () => {
     <section className="custom-container space-y-14">
       {/* Header start */}
       <div className="flex flex-row gap-2 items-center justify-center">
-        <img src={getWeatherIcon(currentWeather.condition)} className="w-22" />
+        <motion.img
+          initial={{ opacity: 0, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, filter: 'blur(0)' }}
+          src={getWeatherIcon(currentWeather.condition)}
+          className="w-22"
+        />
         <div className="felx flex-col items-start">
-          <p className="text-sm text-muted-foreground">{selectedCity}</p>
-          <p className="text-5xl uppercase font-semibold">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-sm text-muted-foreground"
+          >
+            {selectedCity}
+          </motion.p>
+          <motion.p
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-5xl uppercase font-semibold"
+          >
             {Math.round(temperature)} {unitSymbol}
-          </p>
-          <h1 className="text-lg">
+          </motion.p>
+          <motion.h1
+            initial={{ y: 5, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.3 } }}
+            className="text-lg"
+          >
             Feels like {feelsLike} {unitSymbol}
-          </h1>
+          </motion.h1>
         </div>
       </div>
       {/* Header end */}
 
       {/* Weather details start */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="flex flex-col max-w-sm mx-auto gap-4">
         {displayOptions.showHumidity && (
-          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="flex items-center gap-3 p-3 bg-accent rounded-lg"
+          >
             <Droplets className="h-5 w-5 text-blue-600 dark:text-blue-400" />
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -88,11 +112,15 @@ const Home = () => {
                 {currentWeather.humidity}%
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {displayOptions.showWindSpeed && (
-          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
+            className="flex items-center gap-3 p-3 bg-accent rounded-lg"
+          >
             <Wind className="h-5 w-5 text-green-600 dark:text-green-400" />
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -102,11 +130,15 @@ const Home = () => {
                 {currentWeather.windSpeed} m/s
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {displayOptions.showVisibility && (
-          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.3 } }}
+            className="flex items-center gap-3 p-3 bg-accent rounded-lg"
+          >
             <Eye className="h-5 w-5 text-purple-600 dark:text-purple-400" />
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -116,11 +148,15 @@ const Home = () => {
                 {(currentWeather.visibility / 1000).toFixed(1)} km
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {displayOptions.showPressure && (
-          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.4 } }}
+            className="flex items-center gap-3 p-3 bg-accent rounded-lg"
+          >
             <Gauge className="h-5 w-5 text-orange-600 dark:text-orange-400" />
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -130,11 +166,15 @@ const Home = () => {
                 {currentWeather.pressure} hPa
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {displayOptions.showUVIndex && (
-          <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { delay: 0.5 } }}
+            className="flex items-center gap-3 p-3 bg-accent rounded-lg"
+          >
             <Thermometer className="h-5 w-5 text-red-600 dark:text-red-400" />
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -144,7 +184,7 @@ const Home = () => {
                 {currentWeather.uvIndex}
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
       {/* Weather details end */}

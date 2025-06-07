@@ -23,3 +23,10 @@ export interface ForecastData {
   description: string;
   icon: string;
 }
+
+export interface WeatherStatisticsModel {
+  avgTemp: number;
+  minTemp: number;
+  maxTemp: number;
+  avgHumidity: number;
+}

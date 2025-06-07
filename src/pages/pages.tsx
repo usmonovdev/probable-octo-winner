@@ -12,7 +12,14 @@ const Pages = () => {
         <Route path="/forecast" element={<Forecast />} />
         <Route path="/statistics" element={<Statistics />} />
       </Route>
-      <Route path="*" element={<p>404 not found</p>} />
+      <Route
+        path="*"
+        element={
+          <div className="w-full h-screen flex items-center justify-centerf">
+            404 not found
+          </div>
+        }
+      />
     </Routes>
   );
 };

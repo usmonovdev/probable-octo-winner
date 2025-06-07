@@ -6,7 +6,7 @@ import { WeatherProvider } from '@/shared/contexts/weather/WeatherProvider';
 const MainProvider = () => {
   return (
     <BrowserRouter>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider>
         <WeatherProvider>
           <Pages />
         </WeatherProvider>

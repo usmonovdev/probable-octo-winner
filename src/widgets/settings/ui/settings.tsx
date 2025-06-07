@@ -51,7 +51,7 @@ const Settings = () => {
           <DialogTitle className="mb-4">Weather app settings</DialogTitle>
           {/* Location start */}
           <div className="flex flex-row w-full justify-between">
-            <p className="text-sm">Location</p>
+            <p className="text-sm text-start">Location</p>
             <Select
               defaultValue={selectedCity}
               key={selectedCity}
@@ -78,7 +78,7 @@ const Settings = () => {
 
           {/* Temperature unit start */}
           <div className="flex flex-row w-full justify-between">
-            <p className="text-sm">Temperature unit</p>
+            <p className="text-sm text-start">Temperature unit</p>
             <Select
               defaultValue={unit}
               onValueChange={(value) =>
@@ -98,7 +98,7 @@ const Settings = () => {
 
           {/* Temperature unit start */}
           <div className="flex flex-row w-full justify-between">
-            <p className="text-sm">Dark mode</p>
+            <p className="text-sm text-start">Dark mode</p>
             <div className="flex flex-row gap-2 items-center">
               <Sun className="size-6 text-muted-foreground" />
               <Switch onClick={onChangeTheme} checked={theme === 'dark'} />
@@ -112,7 +112,7 @@ const Settings = () => {
             <p className="text-sm font-medium text-start">Display options</p>
             <div className="space-y-4 mt-4">
               <div className="flex flex-row w-full justify-between">
-                <p className="text-sm">Show Humidity</p>
+                <p className="text-sm text-start">Show Humidity</p>
                 <Switch
                   checked={displayOptions.showHumidity}
                   onClick={() =>
@@ -125,7 +125,7 @@ const Settings = () => {
               </div>
 
               <div className="flex flex-row w-full justify-between">
-                <p className="text-sm">Show Wind Speed</p>
+                <p className="text-sm text-start">Show Wind Speed</p>
                 <Switch
                   checked={displayOptions.showWindSpeed}
                   onClick={() =>
@@ -138,7 +138,7 @@ const Settings = () => {
               </div>
 
               <div className="flex flex-row w-full justify-between">
-                <p className="text-sm">Show Visibility</p>
+                <p className="text-sm text-start">Show Visibility</p>
                 <Switch
                   checked={displayOptions.showVisibility}
                   onClick={() =>
@@ -151,7 +151,7 @@ const Settings = () => {
               </div>
 
               <div className="flex flex-row w-full justify-between">
-                <p className="text-sm">Show Pressure</p>
+                <p className="text-sm text-start">Show Pressure</p>
                 <Switch
                   checked={displayOptions.showPressure}
                   onClick={() =>
@@ -164,7 +164,7 @@ const Settings = () => {
               </div>
 
               <div className="flex flex-row w-full justify-between">
-                <p className="text-sm">Show UV Index</p>
+                <p className="text-sm text-start">Show UV Index</p>
                 <Switch
                   checked={displayOptions.showUVIndex}
                   onClick={() =>
