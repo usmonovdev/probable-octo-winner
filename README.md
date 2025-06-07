@@ -7,5 +7,5 @@ GitHub: https://github.com/usmonovdev/probable-octo-winner
 ENV
 ```
 VITE_WEATHERMAP_API_URL=https://api.openweathermap.org/data/2.5
-VITE_WEATHERMAP_API_KEY=https://home.openweathermap.org/api_keys
+VITE_WEATHERMAP_API_KEY=string
 ```
